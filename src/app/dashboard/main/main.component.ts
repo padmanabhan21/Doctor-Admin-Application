@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     $("body").removeClass("authentication sidebar-collapse");
       $(function() {
-          initDonutChart();
+        //   initDonutChart();
           MorrisArea();
           Jknob();
           initCounters();

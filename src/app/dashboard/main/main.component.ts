@@ -51,7 +51,7 @@ export class MainComponent implements OnInit {
               }
           });
       }
-
+       //chart 
       function MorrisArea() {
           Morris.Area({
               element: 'area_chart',

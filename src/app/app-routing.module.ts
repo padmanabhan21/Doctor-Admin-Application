@@ -7,8 +7,6 @@ const routes: Routes = [
         loadChildren: './dashboard/dashboard.module#DashboardModule'
     },
     {
-<<<<<<< HEAD
-=======
         path: 'configer',
         loadChildren: './configuration/configuration.module#ConfigurationModule'
     },
@@ -49,7 +47,6 @@ const routes: Routes = [
         loadChildren: 'app/maps/maps.module#MapsModule'
     },
     {
->>>>>>> 4eaef1fa1b472c04671ca1435dc145dbf1c9f8bf
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'

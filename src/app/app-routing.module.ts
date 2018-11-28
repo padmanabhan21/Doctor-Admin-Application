@@ -7,13 +7,13 @@ const routes: Routes = [
         loadChildren: './dashboard/dashboard.module#DashboardModule'
     },
     {
-        path: 'app',
-        loadChildren: 'app/app/app.module#AppModule'
+        path: 'configer',
+        loadChildren: './configuration/configuration.module#ConfigurationModule'
     },
-    {
-        path: 'ecommerce',
-        loadChildren: 'app/ecommerce/ecommerce.module#EcommerceModule'
-    },
+    // {
+    //     path: 'ecommerce',
+    //     loadChildren: 'app/ecommerce/ecommerce.module#EcommerceModule'
+    // },
     {
         path: 'user-interface',
         loadChildren: 'app/user-interface/user-interface.module#UserInterfaceModule'

@@ -330,13 +330,18 @@ export class MainComponent implements OnInit {
   public liveFeedData = [
     {"token_number":1,"token_status":"Completed","token_time":"6:00 PM"},
     {"token_number":2,"token_status":"Cancelled","token_time":"7:00 PM"},
-    {"token_number":3,"token_status":"Completed","token_time":"8:00 PM"}
+    {"token_number":3,"token_status":"Completed","token_time":"8:00 PM"},
+    {"token_number":2,"token_status":"Cancelled","token_time":"7:00 PM"},
+    {"token_number":2,"token_status":"Cancelled","token_time":"7:00 PM"},
+
     ]
 
     public bookingsData = [
         {"customer_name":"Bala","customer_token":1,"customer_time":"6:00 PM"},
         {"customer_name":"Venkat","customer_token":2,"customer_time":"7:00 PM"},
-        {"customer_name":"Santha","customer_token":3,"customer_time":"8:00 PM"}
+        {"customer_name":"Santha","customer_token":3,"customer_time":"8:00 PM"},
+        {"customer_name":"Venkat","customer_token":2,"customer_time":"7:00 PM"},
+        {"customer_name":"Venkat","customer_token":2,"customer_time":"7:00 PM"},        
         ]
 
 }

@@ -11,15 +11,12 @@
 .font-10{
     font-size: 10px;
 }
-.bg-color{
-    
-}
 .bold{
     /* font-size:16px; */
     font-weight: 700;
 }
 
 .panelhight{
-    max-height: 270px;
-    overflow:auto;
+    min-height: 475px !important;
+    overflow: hidden;
 }

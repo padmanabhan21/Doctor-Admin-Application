@@ -23,6 +23,10 @@ const routes: Routes = [
         loadChildren: './notification/notification.module#NotificationModule'
     },
     {
+        path: 'report',
+        loadChildren: './Reports/reports.module#ReportsModule'
+    },
+    {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'

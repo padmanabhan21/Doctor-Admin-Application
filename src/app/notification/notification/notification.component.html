@@ -1,3 +1,88 @@
-<p>
-  notification works!
-</p>
+<section class="content home">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-12">
+        <h2>Notification
+          <small>Send Notification to Patient </small>
+        </h2>
+      </div>
+      <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+
+
+        <ul class="breadcrumb float-md-right">
+          <li class="breadcrumb-item"><a routerLink="/notification/notify"><i class="zmdi zmdi-home"></i> Doctor</a></li>
+          <li class="breadcrumb-item active">Notification</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2><strong>Notification</strong> Detail</h2>
+          </div>
+          <div class="body product-report">
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <label for="titles">Title</label>
+                <div class="form-group">
+                  <input type="text" id="titles" class="form-control" placeholder="">
+                </div>
+                <label for="msg">Message</label>
+                <div class="form-group">
+                  <input type="text" id="msg" class="form-control" placeholder="">
+                </div>
+
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+              <label>Type</label>
+              <div class="row clearfix">
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <div class="checkbox">
+                    <input id="checkbox" type="checkbox">
+                    <label for="checkbox">SMS Notification</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <div class="checkbox">
+                    <input id="checkbox" type="checkbox">
+                    <label for="checkbox">Email Notification</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="form-group">
+                  <div class="checkbox">
+                    <input id="checkbox" type="checkbox">
+                    <label for="checkbox">Push Notification</label>
+                  </div>
+                </div>
+              </div>
+              </div>
+              </div>
+            </div>
+            <br>
+            <div class="row clearfix">
+                <div class="col-lg-10 col-md-12 col-sm-12">
+                </div>
+                <div class="col-lg-2 col-md-12 col-sm-12">
+                    <button type="button" class="btn btn-raised btn-primary btn-round waves-effect">Send Notification</button>
+      
+                        </div>
+            </div>      
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

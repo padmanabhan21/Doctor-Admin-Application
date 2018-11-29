@@ -15,6 +15,14 @@ const routes: Routes = [
         loadChildren: './authentication/authentication.module#AuthenticationModule'
     },
     {
+        path: 'patientlist',
+        loadChildren: './patientlist/patientlist.module#PatientlistModule'
+    },
+    {
+        path: 'notifi',
+        loadChildren: './notification/notification.module#NotificationModule'
+    },
+    {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'

@@ -26,36 +26,19 @@ export class ReportsComponent implements OnInit {
     var chart = this.AmCharts.makeChart("chartdiv", {
       "type": "pie",
       "theme": "light",
-      "dataProvider": [{
-        "country": "Lithuania",
-        "litres": 501.9
+      "dataProvider": [
+        {
+        "status": "Booked",
+        "count": 50
       }, {
-        "country": "Czech Republic",
-        "litres": 301.9
+        "status": "Cancelled",
+        "count": 10
       }, {
-        "country": "Ireland",
-        "litres": 201.1
-      }, {
-        "country": "Germany",
-        "litres": 165.8
-      }, {
-        "country": "Australia",
-        "litres": 139.9
-      }, {
-        "country": "Austria",
-        "litres": 128.3
-      }, {
-        "country": "UK",
-        "litres": 99
-      }, {
-        "country": "Belgium",
-        "litres": 60
-      }, {
-        "country": "The Netherlands",
-        "litres": 50
+        "status": "Checkedout",
+        "count": 40
       }],
-      "valueField": "litres",
-      "titleField": "country",
+      "valueField": "count",
+      "titleField": "status",
       "balloon": {
         "fixedPosition": true
       },
@@ -84,38 +67,31 @@ export class ReportsComponent implements OnInit {
       "type": "pie",
       "theme": "light",
       "path": "https://www.amcharts.com/lib/3/",
-      "dataProvider": [ {
-        "country": "Lithuania",
-        "value": 260,
-        "pulled": true
+      "dataProvider": [ 
+      {
+      "illness": "General",
+      "count": 260,
+      // "pulled": true
       }, {
-        "country": "Ireland",
-        "value": 201,
-        "pulled": true
+        "illness": "Surgery",
+        "count": 201,
+        // "pulled": true
       }, {
-        "country": "Germany",
-        "value": 65,
-        "pulled": true
+        "illness": "Treatment",
+        "count": 65,
+        // "pulled": true
       }, {
-        "country": "Australia",
-        "value": 39,
-        "pulled": true
-      }, {
-        "country": "UK",
-        "value": 19,
-        "pulled": true
-      }, {
-        "country": "Latvia",
-        "value": 10,
-        "pulled": true
+        "illness": "Dialysis",
+        "count": 39,
+        // "pulled": true
       } ],
-      "valueField": "value",
-      "titleField": "country",
+      "valueField": "count",
+      "titleField": "illness",
       "pulledField": "pulled",
       "outlineAlpha": 0.4,
       "depth3D": 15,
       "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
-      "angle": 30,
+      "angle": 45,
       "export": {
         "enabled": true
       }
@@ -128,35 +104,35 @@ export class ReportsComponent implements OnInit {
       "type": "pie",
       "theme": "light",
       "dataProvider": [{
-        "country": "Lithuania",
-        "litres": 501.9
+        "location": "chromepet",
+        "count": 501
       }, {
-        "country": "Czech Republic",
-        "litres": 301.9
+        "location": "tambaram",
+        "count": 301
       }, {
-        "country": "Ireland",
-        "litres": 201.1
+        "location": "Anna Nagar",
+        "count": 201
       }, {
-        "country": "Germany",
-        "litres": 165.8
+        "location": "Nungabakkam",
+        "count": 165
       }, {
-        "country": "Australia",
-        "litres": 139.9
+        "location": "Pallavaram",
+        "count": 139
       }, {
-        "country": "Austria",
-        "litres": 128.3
+        "location": "Velachery",
+        "count": 128
       }, {
-        "country": "UK",
-        "litres": 99
+        "location": "Medavakkam",
+        "count": 99
       }, {
-        "country": "Belgium",
-        "litres": 60
+        "location": "Chengalpattu",
+        "count": 60
       }, {
-        "country": "The Netherlands",
-        "litres": 50
+        "location": "Guindy",
+        "count": 50
       }],
-      "valueField": "litres",
-      "titleField": "country",
+      "valueField": "count",
+      "titleField": "location",
       "balloon": {
         "fixedPosition": true
       },
@@ -172,17 +148,17 @@ export class ReportsComponent implements OnInit {
     element: 'm_donut_chart',
     data: [
         {
-            label: 'Online Sales',
+            label: 'Whatsapp',
             value: 45,
 
         }, {
-            label: 'Store Sales',
+            label: 'Medicus4U',
             value: 35
         }, {
-            label: 'Email Sales',
+            label: 'Direct',
             value: 8
         }, {
-            label: 'Agent Sales',
+            label: 'Call',
             value: 12
         }],
 
@@ -195,44 +171,44 @@ export class ReportsComponent implements OnInit {
 Morris.Bar({
   element: 'm_bar_chart',
   data: [{
-      y: '2011',
-      a: 80,
-      b: 56,
-      c: 89
+      day: 'Sun',
+      booked: 80,
+      cancelled: 56,
+      checkedout: 89
   }, {
-      y: '2012',
-      a: 75,
-      b: 65,
-      c: 38
+      day: 'Mon',
+      booked: 75,
+      cancelled: 65,
+      checkedout: 38
   }, {
-      y: '2013',
-      a: 59,
-      b: 30,
-      c: 37
+    day: 'Tue',
+    booked: 25,
+    cancelled: 15,
+    checkedout: 38
   }, {
-      y: '2014',
-      a: 75,
-      b: 65,
-      c: 40
+    day: 'Wed',
+    booked: 55,
+    cancelled: 6,
+    checkedout: 8
   }, {
-      y: '2015',
-      a: 55,
-      b: 40,
-      c: 45
+    day: 'Thur',
+    booked: 25,
+    cancelled: 45,
+    checkedout: 68
   }, {
-      y: '2016',
-      a: 75,
-      b: 65,
-      c: 40
+    day: 'Fri',
+    booked: 75,
+    cancelled: 65,
+    checkedout: 38
   }, {
-      y: '2017',
-      a: 87,
-      b: 88,
-      c: 36
+    day: 'Sat',
+    booked: 75,
+    cancelled: 65,
+    checkedout: 38
   }],
-  xkey: 'y',
-  ykeys: ['a', 'b', 'c'],
-  labels: ['A', 'B', 'C'],
+  xkey: 'day',
+  ykeys: ['booked', 'cancelled', 'checkedout'],
+  labels: ['Book', 'Cancel', 'Checkout'],
   barColors: ['#757575', '#26c6da', '#ffcc80'],
   hideHover: 'auto',
   gridLineColor: '#eef0f2',

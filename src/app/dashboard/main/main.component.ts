@@ -56,47 +56,47 @@ export class MainComponent implements OnInit {
           Morris.Area({
               element: 'area_chart',
               data: [{
-                  period: '2011',
-                  Project1: 2,
-                  Project2: 0,
-                  Project3: 0
+                  period: '2019-01-21',
+                  Booked: 10,
+                  Cancelled: 3,
+                  Checkedout: 7
               }, {
-                  period: '2012',
-                  Project1: 50,
-                  Project2: 15,
-                  Project3: 5
+                  period: '2019-01-22',
+                  Booked: 50,
+                  Cancelled: 15,
+                  Checkedout: 5
               }, {
-                  period: '2013',
-                  Project1: 15,
-                  Project2: 50,
-                  Project3: 23
+                  period: '2019-01-23',
+                  Booked: 15,
+                  Cancelled: 50,
+                  Checkedout: 23
               }, {
-                  period: '2014',
-                  Project1: 45,
-                  Project2: 12,
-                  Project3: 7
+                  period: '2019-01-24',
+                  Booked: 45,
+                  Cancelled: 12,
+                  Checkedout: 7
               }, {
-                  period: '2015',
-                  Project1: 20,
-                  Project2: 32,
-                  Project3: 55
+                  period: '2019-01-25',
+                  Booked: 20,
+                  Cancelled: 32,
+                  Checkedout: 55
               }, {
-                  period: '2016',
-                  Project1: 39,
-                  Project2: 67,
-                  Project3: 20
+                  period: '2019-01-26',
+                  Booked: 39,
+                  Cancelled: 67,
+                  Checkedout: 20
               }, {
-                  period: '2017',
-                  Project1: 20,
-                  Project2: 9,
-                  Project3: 5
+                  period: '2019-01-27',
+                  Booked: 70,
+                  Cancelled: 20,
+                  Checkedout: 50
               }
 
               ],
               lineColors: ['#616161', '#00ced1', '#ff758e'],
               xkey: 'period',
-              ykeys: ['Project1', 'Project2', 'Project3'],
-              labels: ['Project1', 'Project2', 'Project3'],
+              ykeys: ['Booked', 'Cancelled', 'Checkedout'],
+              labels: ['Booked', 'Cancelled', 'Checkedout'],
               pointSize: 0,
               lineWidth: 0,
               resize: true,

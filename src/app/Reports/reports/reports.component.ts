@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 // import * as am4charts from "@amcharts/amcharts4/charts";
 import { AmChartsService } from "amcharts3-angular2";
+declare const Morris: any;
+declare const $: any;
 // import * as am4core from "@amcharts/amcharts4/core";
 // import * as am4maps from "@amcharts/amcharts4/maps";
-import { ReportsService } from './reports.service';
+// import { ReportsService } from './reports.service';
 
 @Component({
   selector: 'app-reports',
@@ -283,6 +285,137 @@ export class ReportsComponent implements OnInit {
 
 //chart 7
 
+    
+ 
+
+   // Morris donut chart
+   Morris.Donut({
+    element: 'm_donut_chart',
+    data: [
+        {
+            label: 'Online Sales',
+            value: 45,
+
+        }, {
+            label: 'Store Sales',
+            value: 35
+        }, {
+            label: 'Email Sales',
+            value: 8
+        }, {
+            label: 'Agent Sales',
+            value: 12
+        }],
+
+    resize: true,
+    colors: ['#ffd97f', '#fab2c0', '#80dad8', '#a1abb8']
+});
+//chart 6
+
+// Morris bar chart
+Morris.Bar({
+  element: 'm_bar_chart',
+  data: [{
+      y: '2011',
+      a: 80,
+      b: 56,
+      c: 89
+  }, {
+      y: '2012',
+      a: 75,
+      b: 65,
+      c: 38
+  }, {
+      y: '2013',
+      a: 59,
+      b: 30,
+      c: 37
+  }, {
+      y: '2014',
+      a: 75,
+      b: 65,
+      c: 40
+  }, {
+      y: '2015',
+      a: 55,
+      b: 40,
+      c: 45
+  }, {
+      y: '2016',
+      a: 75,
+      b: 65,
+      c: 40
+  }, {
+      y: '2017',
+      a: 87,
+      b: 88,
+      c: 36
+  }],
+  xkey: 'y',
+  ykeys: ['a', 'b', 'c'],
+  labels: ['A', 'B', 'C'],
+  barColors: ['#757575', '#26c6da', '#ffcc80'],
+  hideHover: 'auto',
+  gridLineColor: '#eef0f2',
+  resize: true
+});
+
+//chart 7
+$('#world-map-markers').vectorMap({
+  map: 'in_mill',
+  normalizeFunction: 'polynomial',
+  hoverOpacity: 0.7,
+  hoverColor: false,
+  backgroundColor: 'transparent',
+  regionStyle: {
+      initial: {
+          fill: 'rgba(210, 214, 222, 1)',
+          'fill-opacity': 1,
+          stroke: 'none',
+          'stroke-width': 0,
+          'stroke-opacity': 1
+      },
+      hover: {
+          fill: 'rgba(255, 193, 7, 2)',
+          cursor: 'pointer'
+      },
+      selected: {
+          fill: 'yellow'
+      },
+      selectedHover: {}
+  },
+  markerStyle: {
+      initial: {
+          fill: '#fff',
+          stroke: '#FFC107 '
+      }
+  },
+  markers: [{
+          latLng: [37.09, -95.71],
+          name: 'America'
+      },
+      {
+          latLng: [51.16, 10.45],
+          name: 'Germany'
+      },
+      {
+          latLng: [-25.27, 133.77],
+          name: 'Australia'
+      },
+      {
+          latLng: [56.13, -106.34],
+          name: 'Canada'
+      },
+      {
+          latLng: [20.59, 78.96],
+          name: 'India'
+      },
+      {
+          latLng: [12.95, 80.14],
+          name: 'Bala'
+      },
+  ]
+});
     
  
 

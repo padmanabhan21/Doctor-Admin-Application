@@ -5,11 +5,13 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { MainComponent } from './main/main.component';
 import { RtlComponent } from './rtl/rtl.component';
 import { HorizontalComponent } from './horizontal/horizontal.component';
+import {FormsModule} from '@angular/forms'
 @NgModule({
   
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule,
   ],
   declarations: [MainComponent, RtlComponent, HorizontalComponent]
 })

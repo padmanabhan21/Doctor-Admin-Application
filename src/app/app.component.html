@@ -15,180 +15,74 @@
             <li>
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" routerLink="/dashboard/main"><img src="assets/images/logo.svg" width="30" alt="Oreo"><span class="m-l-10">Oreo</span></a>
+                    <a class="navbar-brand" routerLink="/dashboard/main"><img src="assets/images/hospital-logo.png" width="30" alt="Oreo"><span class="m-l-10"><b>Medicus4U</b></span></a>
                 </div>
             </li>
-            <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>
+            <!-- <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>
             <li class="hidden-md-down"><a routerLink="/app/calendar" title="Events"><i class="zmdi zmdi-calendar"></i></a></li>
             <li class="hidden-md-down"><a routerLink="/app/mail-inbox" title="Inbox"><i class="zmdi zmdi-email"></i></a></li>
-            <li><a routerLink="/app/contact" title="Contact List"><i class="zmdi zmdi-account-box-phone"></i></a></li>
-            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
+            <li><a routerLink="/app/contact" title="Contact List"><i class="zmdi zmdi-account-box-phone"></i></a></li> -->
+            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" title="Livefeed Notifications"><i class="zmdi zmdi-notifications"></i>
                 <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
             </a>
                 <ul class="dropdown-menu pullDown">
+                    <li class="header">Livefeed</li>
                     <li class="body">
                         <ul class="menu list-unstyled">
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href="javascript:void(0);" *ngFor="let app of appdata">
                                     <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar2.jpg" alt="">
                                         <div class="media-body">
-                                            <span class="name">Sophia <span class="time">30min ago</span></span>
-                                            <span class="message">There are many variations of passages</span>
+                                            <span class="name">{{app.user_name}} </span>
+                                            <span class="message">The Patient has {{app.token_status}} at <span class="time">{{app.token_time | date:'shortTime'}}</span></span>
                                         </div>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);">
-                                    <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar3.jpg" alt="">
-                                        <div class="media-body">
-                                            <span class="name">Sophia <span class="time">31min ago</span></span>
-                                            <span class="message">There are many variations of passages of Lorem Ipsum</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar4.jpg" alt="">
-                                        <div class="media-body">
-                                            <span class="name">Isabella <span class="time">35min ago</span></span>
-                                            <span class="message">There are many variations of passages</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar5.jpg" alt="">
-                                        <div class="media-body">
-                                            <span class="name">Alexander <span class="time">35min ago</span></span>
-                                            <span class="message">Contrary to popular belief, Lorem Ipsum random</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="media">
-                                        <img class="media-object" src="assets/images/xs/avatar6.jpg" alt="">
-                                        <div class="media-body">
-                                            <span class="name">Grayson <span class="time">1hr ago</span></span>
-                                            <span class="message">There are many variations of passages</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
                         </ul>
                     </li>
-                    <li class="footer"> <a href="javascript:void(0);">View All</a> </li>
+                    <!-- <li class="footer"> <a href="javascript:void(0);">View All</a> </li> -->
                 </ul>
             </li>
-            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-flag"></i>
+            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" title="Bookings"><i class="zmdi zmdi-flag"></i>
                 <div class="notify">
                     <span class="heartbit"></span>
                     <span class="point"></span>
                 </div>
             </a>
                 <ul class="dropdown-menu pullDown">
-                    <li class="header">Project</li>
+                    <li class="header">Bookings</li>
                     <li class="body">
                         <ul class="menu tasks list-unstyled">
                             <li>
-                                <a href="javascript:void(0);">
+                                <a href="javascript:void(0);"  *ngFor="let bookings of bookingdata">
                                     <div class="progress-container progress-primary">
-                                        <span class="progress-badge">eCommerce Website</span>
+                                        <span class="progress-badge">{{bookings.user_name}}</span>
                                         <div class="progress">
                                             <div class="progress-bar" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 86%;">
-                                                <span class="progress-value">86%</span>
+                                                <span class="progress-value">{{bookings.token_time |  date:'shortTime'}}</span>
                                             </div>
                                         </div>
                                         <ul class="list-unstyled team-info">
-                                            <li class="m-r-15"><small class="text-muted">Team</small></li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar2.jpg" alt="Avatar">
-                                            </li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar3.jpg" alt="Avatar">
-                                            </li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar4.jpg" alt="Avatar">
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="progress-container progress-info">
-                                        <span class="progress-badge">iOS Game Dev</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                                                <span class="progress-value">45%</span>
-                                            </div>
-                                        </div>
-                                        <ul class="list-unstyled team-info">
-                                            <li class="m-r-15"><small class="text-muted">Team</small></li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar10.jpg" alt="Avatar">
-                                            </li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar9.jpg" alt="Avatar">
-                                            </li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar8.jpg" alt="Avatar">
-                                            </li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar7.jpg" alt="Avatar">
-                                            </li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar6.jpg" alt="Avatar">
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <div class="progress-container progress-warning">
-                                        <span class="progress-badge">Home Development</span>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100" style="width: 29%;">
-                                                <span class="progress-value">29%</span>
-                                            </div>
-                                        </div>
-                                        <ul class="list-unstyled team-info">
-                                            <li class="m-r-15"><small class="text-muted">Team</small></li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar5.jpg" alt="Avatar">
-                                            </li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar2.jpg" alt="Avatar">
-                                            </li>
-                                            <li>
-                                                <img src="assets/images/xs/avatar7.jpg" alt="Avatar">
-                                            </li>
+                                            <li class="m-r-15"><small class="text-muted"> The Patient {{bookings.user_name}} as booked for token  {{bookings.token_no}}</small></li>
                                         </ul>
                                     </div>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="footer"><a href="javascript:void(0);">View All</a></li>
+                    <!-- <li class="footer"><a href="javascript:void(0);">View All</a></li> -->
                 </ul>
             </li>
-            <li class="hidden-sm-down">
+            <!-- <li class="hidden-sm-down">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search...">
                     <span class="input-group-addon">
                         <i class="zmdi zmdi-search"></i>
                     </span>
                 </div>
-            </li>
+            </li> -->
             <li class="float-right">
                 <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a>
                 <a routerLink="/authentication/sign-in" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
@@ -211,15 +105,15 @@
                         <div class="menu">
                             <ul class="list">
                                 <li>
-                                    <div class="user-info">
-                                        <div class="image"><a routerLink="/sample-pages/profile"><img src="assets/images/profile_av.jpg" alt="User"></a></div>
+                                    <div class="user-info" *ngFor="let app of select">
+                                        <div class="image"><a routerLink="/sample-pages/profile"><img src="assets/images/profile_av.jpg" alt="Doctor"></a></div>
                                         <div class="detail">
-                                            <h4>Venkat</h4>
-                                            <small>UI UX Designer</small>
+                                            <h4>{{app.doctor_name}}</h4>
+                                            <small>{{app.qualification | uppercase}}</small>
                                         </div>
-                                        <a title="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a>
+                                        <!-- <a title="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a>
                                         <a title="twitter" href="#"><i class="zmdi zmdi-twitter"></i></a>
-                                        <a title="instagram" href="#"><i class="zmdi zmdi-instagram"></i></a>
+                                        <a title="instagram" href="#"><i class="zmdi zmdi-instagram"></i></a> -->
                                     </div>
                                 </li>
                                 <li class="header">MAIN</li>
@@ -251,17 +145,17 @@
                         <div class="menu">
                             <ul class="list">
                                 <li>
-                                    <div class="user-info m-b-20 p-b-15">
-                                        <div class="image"><a routerLink="/sample-pages/profile"><img src="assets/images/profile_av.jpg" alt="User"></a></div>
+                                    <div class="user-info m-b-20 p-b-15" *ngFor="let app of select">
+                                        <div class="image"><a routerLink="/sample-pages/profile"><img src="assets/images/profile_av.jpg" alt="Doctor"></a></div>
                                         <div class="detail">
-                                            <h4>Michael</h4>
-                                            <small>UI UX Designer</small>
+                                            <h4>{{app.doctor_name}}</h4>
+                                            <small>{{app.qualification | uppercase}}</small>
                                         </div>
-                                        <a title="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a>
+                                        <!-- <a title="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a>
                                         <a title="twitter" href="#"><i class="zmdi zmdi-twitter"></i></a>
-                                        <a title="instagram" href="#"><i class="zmdi zmdi-instagram"></i></a>
-                                        <p class="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p>
-                                        <div class="row">
+                                        <a title="instagram" href="#"><i class="zmdi zmdi-instagram"></i></a> -->
+                                        <p class="text-muted" *ngFor="let app of select">{{app.country}} </p>
+                                        <!-- <div class="row">
                                             <div class="col-4">
                                                 <h5 class="m-b-5">852</h5>
                                                 <small>Following</small>
@@ -274,17 +168,17 @@
                                                 <h5 class="m-b-5">234</h5>
                                                 <small>Post</small>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </li>
                                 <li>
-                                    <small class="text-muted">Email address: </small>
-                                    <p>michael@gmail.com</p>
+                                    <small class="text-muted" *ngFor="let app of select">Email address: </small>
+                                    <p class="text-muted" *ngFor="let app of select">{{app.email}}</p>
                                     <hr>
-                                    <small class="text-muted">Phone: </small>
-                                    <p>+ 202-555-0191</p>
+                                    <small class="text-muted" *ngFor="let app of select">Phone: </small>
+                                    <p class="text-muted" *ngFor="let app of select">{{app.mobile}}</p>
                                     <hr>
-                                    <ul class="list-unstyled">
+                                    <!-- <ul class="list-unstyled">
                                         <li>
                                             <div>Photoshop</div>
                                             <div class="progress m-b-20">
@@ -309,7 +203,7 @@
                                                 <div class="progress-bar l-blush" role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100" style="width: 43%"> <span class="sr-only">56% Complete</span> </div>
                                             </div>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                             </ul>
                         </div>
@@ -338,6 +232,7 @@
                                 <li><a href="javascript:void(0)">Calendar</a> </li>
                                 <li><a href="javascript:void(0)">Contact list</a> </li>
                                 <li><a href="javascript:void(0)">Blogger</a> </li>
+
                             </ul>
                         </li>
                         <li><a href="javascript:void(0)">UI Kit</a>
@@ -599,9 +494,9 @@
                                             <h4>Michael</h4>
                                             <small>UI UX Designer</small>
                                         </div>
-                                        <a title="facebook" href="javascript:void(0);"><i class="zmdi zmdi-facebook"></i></a>
+                                        <!-- <a title="facebook" href="javascript:void(0);"><i class="zmdi zmdi-facebook"></i></a>
                                         <a title="twitter" href="javascript:void(0);"><i class="zmdi zmdi-twitter"></i></a>
-                                        <a title="instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram"></i></a>
+                                        <a title="instagram" href="javascript:void(0);"><i class="zmdi zmdi-instagram"></i></a> -->
                                         <div class="row">
                                             <div class="col-6">
                                                 <small>Primary</small>
@@ -1701,9 +1596,9 @@
     </div>
 </aside>
 
-<div *ngIf="previousUrl != 'sign-in' && previousUrl != 'sign-up' && previousUrl !=  'forget-password' && previousUrl !=  '404' && previousUrl !=  '500' && previousUrl !=  'page-offline' && previousUrl !=  'locked' ">
+<!-- <div *ngIf="previousUrl != 'sign-in' && previousUrl != 'sign-up' && previousUrl !=  'forget-password' && previousUrl !=  '404' && previousUrl !=  '500' && previousUrl !=  'page-offline' && previousUrl !=  'locked' "> -->
     <!-- Chat-launcher -->
-    <div class="chat-launcher"></div>
+    <!-- <div class="chat-launcher"></div>
     <div class="chat-wrapper">
         <div class="card">
             <div class="header">
@@ -1763,5 +1658,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <router-outlet></router-outlet>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {FormsModule} from '@angular/forms';
 import { PatientlistRoutingModule } from './patientlist-routing.module';
 import { PatientlistComponent } from './patientlist/patientlist.component';
 
@@ -8,7 +8,8 @@ import { PatientlistComponent } from './patientlist/patientlist.component';
 
   imports: [
     CommonModule,
-    PatientlistRoutingModule
+    PatientlistRoutingModule,
+    FormsModule,
   ],
   declarations: [PatientlistComponent]
 })

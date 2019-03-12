@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotificationComponent } from './notification.component';
+import {FormsModule} from '@angular/forms';
+
 
 describe('NotificationComponent', () => {
   let component: NotificationComponent;
@@ -8,6 +10,7 @@ describe('NotificationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[FormsModule],
       declarations: [ NotificationComponent ]
     })
     .compileComponents();

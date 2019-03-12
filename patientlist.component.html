@@ -1,0 +1,117 @@
+<section class="content contact">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-lg-7 col-md-6 col-sm-12">
+        <h2>Patient Details
+          <small>View Today Appointments</small>
+        </h2>
+        <!-- <input type="checkbox" id="switch"/><label for="switch">Toggle</label> -->
+       </div>
+      <div class="col-lg-5 col-md-6 col-sm-12">
+        <ul class="breadcrumb float-md-right">
+          <li class="breadcrumb-item">
+            <a routerLink="dashboard/main">
+              <i class="zmdi zmdi-home"></i> Doctor</a>
+          </li>
+          <li class="breadcrumb-item active">Patient List</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              <strong>Patient</strong> Details</h2>
+          </div>
+                                                          
+          <div class="body table-responsive">
+            <table class="table table-hover m-b-0 c_list" style="padding: 100px;">
+              <thead>
+                <tr style= "height: 10px;">
+                  <th>#</th>
+                  <th>Name</th>
+                  <th data-breakpoints="xs">Token</th>
+                  <th data-breakpoints="xs">Phone</th>
+                  <th data-breakpoints="xs sm md">Address</th>
+                  <th data-breakpoints="xs sm md">Status</th>
+                  
+                  
+                 </tr>
+                
+              </thead>
+              <tbody>
+                <tr *ngFor="let patientlist of patientListData;let i=index;">
+                  <td style="padding: 3px;" >{{i+1}}</td>
+                  <td><p class="c_name">{{patientlist.user_name}}</p></td>
+                  <td><p class="c_name"> Token {{patientlist.token_no}}</p></td>
+                  <td><span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>{{patientlist.mobile}}</span></td>
+                  <td><address><i class="zmdi zmdi-pin"></i>{{patientlist.city}}</address></td>
+                  <td><label class="switch">
+                    <input type="checkbox" data-toggle="modal" data-target="#myModal">
+                    <span class="slider round"></span>
+                  </label></td>                                                                                    
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</section>
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Status</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="container">
+        
+        <form>
+          <label class="radio-inline">
+            <input type="radio" name="optradio"  >Option 1
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio">Option 2
+          </label>
+        </form>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        Reason
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <div class="checkbox"> 
+      <label>
+        <input class="" name="check_list[]" type="checkbox">
+        I accept the Terms
+      </label>
+      <label>
+        <input class="" name="check_list[]" type="checkbox">
+        I accept the Terms
+      </label>
+      <label>
+        <input class="" name="check_list[]" type="checkbox">
+        I accept the Terms
+      </label>
+      <label>
+        <input class="" name="check_list[]" type="checkbox">
+        I accept the Terms
+      </label>
+    </div>
+    
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            
+    <button type="button" class="btn btn-primary" id="btn1" disabled=""> Accept Terms</button>
+    </div>
+    </div>
+  </div>
+</div>

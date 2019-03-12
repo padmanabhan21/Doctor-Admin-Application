@@ -9,10 +9,7 @@
       </div>
       <div class="col-lg-7 col-md-7 col-sm-12 text-right">
         <ul class="breadcrumb float-md-right">
-          <li class="breadcrumb-item">
-            <a routerLink="/dashboard/main">
-              <i class="zmdi zmdi-home"></i> Doctor</a>
-          </li>
+          <li class="breadcrumb-item"><a routerLink="/dashboard/main"><i class="zmdi zmdi-home"></i> Doctor</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ul>
       </div>
@@ -25,24 +22,18 @@
           <div class="body">
             <div class="row clearfix">
               <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                <div class="body">
-                  <h2 class="number count-to m-t-0 m-b-5" data-from="0" data-to="501" data-speed="1000" data-fresh-interval="700">501</h2>
-                  <p class="text-muted">Booking</p>
-                  <span id="linecustom1">1,4,2,6,5,2,3,8,5,2</span>
+                <div class="body" style="font-weight: bold; font-size:20px">{{appoinment.Booked}}
+                  <p style="font-weight: bold; font-size:20px" class="text-muted"><i class="zmdi zmdi-book"></i> Bookings</p>
                 </div>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                <div class="body">
-                  <h2 class="number count-to m-t-0 m-b-5" data-from="0" data-to="2501" data-speed="2000" data-fresh-interval="700">2501</h2>
-                  <p class="text-muted ">cancellation</p>
-                  <span id="linecustom2">2,9,5,5,8,5,4,2,6</span>
+                <div class="body" style="font-weight: bold; font-size:20px">{{appoinment.Cancel}}
+                  <p style="font-weight: bold; font-size:20px" class="text-muted"><i class="zmdi zmdi-close-circle"></i> Cancellations</p>
                 </div>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                <div class="body">
-                  <h2 class="number count-to m-t-0 m-b-5" data-from="0" data-to="6051" data-speed="2000" data-fresh-interval="700">6051</h2>
-                  <p class="text-muted">Modifications</p>
-                  <span id="linecustom3">1,5,3,6,6,3,6,8,4,2</span>
+                <div class="body" style="font-weight: bold; font-size:20px">{{appoinment.Checkout}}
+                  <p style="font-weight: bold; font-size:20px" class="text-muted"><i class="zmdi zmdi-check-circle"></i> Checkouts</p>
                 </div>
               </div>
             </div>
@@ -54,111 +45,30 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="header">
-            <h2>
-              <strong>Weekly</strong> Report</h2>
+            <h2><strong>Weekly</strong> Report</h2>
+            <ul class="header-dropdown">
+              <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
+                  <li><a href="javascript:void(0);">Edit</a></li>
+                  <li><a href="javascript:void(0);">Delete</a></li>
+                  <li><a href="javascript:void(0);">Report</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
           <div class="body">
             <div class="row text-center">
             </div>
-            <div id="area_chart" class="graph"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row clearfix">
-      <div class="col-lg-6 col-md-12">
-        <div class="card panelhight">
-          <div class="header">
-            <h2>
-              <strong>Live Feed</strong>
-            </h2>
-            <ul class="header-dropdown">
-              <li class="dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">
-                  <i class="zmdi zmdi-more"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li>
-                    <a href="javascript:void(0);">Action</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">Another action</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">Something else</a>
-                  </li>
-                </ul>
-              </li>
-
-            </ul>
-          </div>
-          <div class="body">
-            <div class="row">
-              <div class="col-lg-12 col-md-12">
-                <table class="table table-striped m-b-0" style="width: 100%;">
-                  <thead>
-                    <td class="bold">Token </td>
-                    <td class="bold">Status</td>
-                    <td class="bold">Time</td>
-                  </thead>
-                  <tbody>
-
-                    <tr *ngFor="let livefeed of liveFeedData">
-                      <td>{{livefeed.token_number}}</td>
-                      <td class="font-medium">{{livefeed.token_status}}</td>
-                      <td class="font-medium">{{livefeed.token_time}}</td>
-                    </tr>
-
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-lg-6 col-md-12">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="card panelhight">
-          <div class="header">
-            <h2>
-              <strong>Bookings</strong>
-            </h2>
-            <ul class="header-dropdown">
-              <li class="dropdown">
-                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">
-                  <i class="zmdi zmdi-more"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li>
-                    <a href="javascript:void(0);">Action</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">Another action</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">Something else</a>
-                  </li>
-                </ul>
-              </li>
-
-            </ul>
-          </div>
-          <div class="body">
-            <ul class="cbp_tmtimeline">
-              <li *ngFor="let bookings of bookingsData">
-                <div class="cbp_tmlabel">
-                  <p class="text-info"> The customer {{bookings.customer_name}} as booked for token {{bookings.customer_token}} </p>
-                  <p class="float-right font-10">{{bookings.customer_time}}</p>
-                </div>
-
-              </li>
-            </ul>
+            <div id="bar_chart" class="graph"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- <input type="date"  
+       [ngModel]="today | date:'yyyy-MM-dd'"     
+       name="dt" 
+       class="form-control form-control-rounded" #searchDate 
+> -->
 </section>

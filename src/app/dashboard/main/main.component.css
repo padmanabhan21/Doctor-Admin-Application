@@ -20,3 +20,8 @@
     min-height: 475px !important;
     overflow: hidden;
 }
+#bar_chart {
+    width		: 100%;
+    height		: 400px;
+    font-size	: 11px;
+  }

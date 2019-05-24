@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions, Headers, RequestMethod } from '@angular/http';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
+// import { Observable } from 'rxjs';
+// import 'rxjs/add/operator/map';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 })
 export class ReportsService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
 
 
@@ -20,4 +20,33 @@ export class ReportsService {
     console.log(JSON.stringify(body));
     return body;
   }
+
+dailystatus(rep){
+  return this.http.post('https://doctorappnew.herokuapp.com/dailystatusreport',rep)
+}
+
+illnessreport(ill){
+  return this.http.post('https://doctorappnew.herokuapp.com/illnessbasedreport',ill)
+}
+
+channelreport(report){
+  return this.http.post('https://doctorappnew.herokuapp.com/channelbasedreport',report)
+}
+
+locationreport(locat){
+  return this.http.post('https://doctorappnew.herokuapp.com/Locationreport',locat)
+}
+
+barchart(){
+  let body={
+    "business_id": 103,
+    "doctor_id": "janu118"
+  }
+  return this.http.post('https://doctorappnew.herokuapp.com/Weekdayreport',body)
+}
+
+// latlongreport(latlong){
+//   console.log("asdf")
+//   return this.http.post('https://doctorappnew.herokuapp.com/latlongreport',latlong)
+// }
 }

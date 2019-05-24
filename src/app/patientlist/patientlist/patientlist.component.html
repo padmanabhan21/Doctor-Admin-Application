@@ -5,6 +5,7 @@
         <h2>Patient Details
           <small>View Today Appointments</small>
         </h2>
+        <!-- <input type="checkbox" id="switch"/><label for="switch">Toggle</label> -->
       </div>
       <div class="col-lg-5 col-md-6 col-sm-12">
         <ul class="breadcrumb float-md-right">
@@ -18,66 +19,6 @@
     </div>
   </div>
   <div class="container-fluid">
-    <!-- <div class="row clearfix">
-      <div class="col-lg-12">
-        <div class="card action_bar">
-          <div class="body">
-            <div class="row clearfix">
-              <div class="col-lg-1 col-md-2 col-3">
-                <div class="checkbox inlineblock delete_all">
-                  <input id="deleteall" type="checkbox">
-                  <label for="deleteall">
-                    All
-                  </label>
-                </div>
-              </div>
-              <div class="col-lg-5 col-md-5 col-6">
-                <div class="input-group search">
-                  <input type="text" class="form-control" placeholder="Search...">
-                  <span class="input-group-addon">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </span>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-5 col-3 text-right">
-                <div class="btn-group hidden-sm-down" role="group">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-neutral dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="zmdi zmdi-label"></i>
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right pullDown">
-                      <li>
-                        <a href="javascript:void(0);">Family</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0);">Work</a>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0);">Google</a>
-                      </li>
-                      <li role="separator" class="divider"></li>
-                      <li>
-                        <a href="javascript:void(0);">Create a Label</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <button type="button" class="btn btn-neutral hidden-sm-down">
-                  <i class="zmdi zmdi-plus-circle"></i>
-                </button>
-                <button type="button" class="btn btn-neutral hidden-sm-down">
-                  <i class="zmdi zmdi-archive"></i>
-                </button>
-                <button type="button" class="btn btn-neutral">
-                  <i class="zmdi zmdi-delete"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <div class="row clearfix">
 
       <div class="col-lg-12">
@@ -86,24 +27,45 @@
             <h2>
               <strong>Patient</strong> Details</h2>
           </div>
-          <div class="body table-responsive">
-            <table class="table table-hover m-b-0 c_list">
+          <div class="body table-responsive fontsize-12">
+            <table class="table table-hover m-b-0 c_list table-wrap" id="table">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>Name</th>
                   <th data-breakpoints="xs">Token</th>
+                  <th data-breakpoints="xs">Appointment Id </th>
                   <th data-breakpoints="xs">Phone</th>
                   <th data-breakpoints="xs sm md">Address</th>
+                  <th data-breakpoints="xs sm md">Status</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let patientlist of patientListData;let i=index;">
                   <td>{{i+1}}</td>
-                  <td><p class="c_name">{{patientlist.customer_name}}</p></td>
-                  <td><p class="c_name"> Token {{patientlist.customer_token}}</p></td>
-                  <td><span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>{{patientlist.customer_mobile}}</span></td>
-                  <td><address><i class="zmdi zmdi-pin"></i>{{patientlist.customer_address}}</address></td>
+                  <td>
+                    <p class="c_name">{{patientlist.user_name}}</p>
+                  </td>
+                  <td>
+                    <p class="c_name"> Token {{patientlist.token_no}}</p>
+                  </td>
+                  <td>
+                    <p class="c_name">{{patientlist.app_id}}</p>
+                  </td>
+                  <td><span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>{{patientlist.mobile}}</span></td>
+                  <td>
+                    <address><i class="zmdi zmdi-pin"></i>{{patientlist.city}}</address>
+                  </td>
+                  <td><label class="switch">
+                      <input type="checkbox" id="togBtn"  data-toggle="modal" data-target="#myModal"
+                        (click)="toggle(patientlist)">
+                      <span class="slider round"></span>
+                      <!-- <div *ngFor="let patientlist of patientListData;">
+                        <p class="c_name">{{patientlist.user_name}}</p>
+                        <p class="c_name">{{patientlist.app_id}}</p>
+                    </div> -->
+
+                    </label></td>
                 </tr>
               </tbody>
             </table>
@@ -114,3 +76,72 @@
 
   </div>
 </section>
+
+<!-- ******************************************************************************************* -->
+<div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="height: 376px">
+      <form #patientsubmit="ngForm" id="">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" (click)="closeModal()">&times;</button>
+        <div class="row">
+          <div class="col-sm-4">
+            <p>UserName: {{username}}</p><br>
+          </div>
+          <div class="col-sm-4">
+            <p>Appointment ID: {{appointmentid}}</p>
+          </div>
+        </div>
+
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+      </div>
+      <div class="container">
+        <div class="row clearfix">
+          <b class="margin">Status</b>
+        </div>
+        <div class="row">
+          <br>
+          <div class="col-md-3">
+            <input type="radio" value="cancel" name="select" #selects="ngModel" [(ngModel)]="select" required> Cancel
+          </div>
+          <div class="col-md-3">
+            <input type="radio" value="checkout" name="select" #checkouts="ngModel" [(ngModel)]="select" required>Checkout
+          </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-12" style="width:100%;">
+          <h4 style="margin-left: 16px;">Reson for Appointment</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <input type="text" placeholder="Type tittle here" name="reason"
+            style="width: 100% ;height: 336%;margin-left: 15px;" list="value" #reasons="ngModel" [(ngModel)]="reason" required>
+          <datalist name="" id="value" #resons="ngModel" [(ngModel)]="reason">
+            <option>General</option>
+            <option>Surgery</option>
+            <option>Health Checkup</option>
+          </datalist>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 69px; ">
+        <div class="col-md-7"></div>
+        <div class="col-md-2"> 
+            <button type="button" class="btn btn-danger" style="width: 100%;float:right;"
+            data-dismiss="modal"><b>close</b></button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-info" style="width: 100%;float:right;"
+            (click)="update(select,reason);patientsubmit.reset()"data-dismiss="modal" [disabled]="!patientsubmit.valid"><b>submit</b></button>
+        </div>
+
+        
+     
+      </div>
+
+    </form>
+    </div>
+
+  </div>
+</div>

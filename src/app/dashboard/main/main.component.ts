@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { MainService } from './main.service';
+import { Router } from '@angular/router';
+import {LocalStorageService} from 'ngx-webstorage';
+import { AmChartsService } from "amcharts3-angular2";
+import * as moment from 'moment';
+import { Observable, interval } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 
 declare const $: any;
 declare const Morris: any;
@@ -7,17 +14,42 @@ declare const slimscroll: any;
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
+  providers:[MainService,AmChartsService]
 })
 export class MainComponent implements OnInit {
+    public liveFeedData:any = [];
+    public appoinment:any=[];
+    public weekly:any=[];
+    public bookingsData:any=[];
+    public today: Date;
+    public now:any;
+    public subscription;
 
-  constructor() { }
+
+  constructor(private AmCharts: AmChartsService,private main:MainService,private router:Router, private storage:LocalStorageService) { 
+  this.today =new Date();
+}
+public chart:any;
 
   ngOnInit() {
+      this.countappoinment();
+      this.barchart();
+      this.countappointmentloop(); 
+
+      this.now = moment().format('YYYY-MM-DD');
+      console.log("DATEeeee :",this.now);
+    //   this.today = new Date().toISOString().split('T')[0];
+    //   var date = new Date(this.date.transform(date,"yyyy-MM-dd"));
+    //   console.log(this.date.transform(date,"yyyy-MM-dd")); //output : 2018-02-13
+   
+    
+
+
     $("body").removeClass("authentication sidebar-collapse");
       $(function() {
         //   initDonutChart();
-          MorrisArea();
+        //   MorrisArea();
           Jknob();
           initCounters();
           initSparkline();
@@ -51,61 +83,7 @@ export class MainComponent implements OnInit {
               }
           });
       }
-       //chart 
-      function MorrisArea() {
-          Morris.Area({
-              element: 'area_chart',
-              data: [{
-                  period: '2011',
-                  Project1: 2,
-                  Project2: 0,
-                  Project3: 0
-              }, {
-                  period: '2012',
-                  Project1: 50,
-                  Project2: 15,
-                  Project3: 5
-              }, {
-                  period: '2013',
-                  Project1: 15,
-                  Project2: 50,
-                  Project3: 23
-              }, {
-                  period: '2014',
-                  Project1: 45,
-                  Project2: 12,
-                  Project3: 7
-              }, {
-                  period: '2015',
-                  Project1: 20,
-                  Project2: 32,
-                  Project3: 55
-              }, {
-                  period: '2016',
-                  Project1: 39,
-                  Project2: 67,
-                  Project3: 20
-              }, {
-                  period: '2017',
-                  Project1: 20,
-                  Project2: 9,
-                  Project3: 5
-              }
-
-              ],
-              lineColors: ['#616161', '#00ced1', '#ff758e'],
-              xkey: 'period',
-              ykeys: ['Project1', 'Project2', 'Project3'],
-              labels: ['Project1', 'Project2', 'Project3'],
-              pointSize: 0,
-              lineWidth: 0,
-              resize: true,
-              fillOpacity: 0.8,
-              behaveLikeLine: true,
-              gridLineColor: '#e0e0e0',
-              hideHover: 'auto'
-          });
-      }
+      
 
       function Jknob() {
           $('.knob').knob({
@@ -238,42 +216,7 @@ export class MainComponent implements OnInit {
           ]
       });
 
-      // Customized line Index page
-      $('#linecustom1').sparkline('html',
-          {
-              height: '35px',
-              width: '100%',
-              lineColor: '#e5d1e4',
-              fillColor: '#f3e8f2',
-              minSpotColor: true,
-              maxSpotColor: true,
-              spotColor: '#e2a8df',
-              spotRadius: 1
-          });
-      $('#linecustom2').sparkline('html',
-          {
-              height: '35px',
-              width: '100%',
-              lineColor: '#c9e3f4',
-              fillColor: '#dfeefa',
-              minSpotColor: true,
-              maxSpotColor: true,
-              spotColor: '#8dbfe0',
-              spotRadius: 1
-          });
-      $('#linecustom3').sparkline('html',
-          {
-              height: '35px',
-              width: '100%',
-              lineColor: '#efded3',
-              fillColor: '#f8f0ea',
-              minSpotColor: true,
-              maxSpotColor: true,
-              spotColor: '#e0b89d',
-              spotRadius: 1
-          });
 
-      // Keep active
       $.each($('.menu .list li.active'), function(i, val) {
           const $activeAnchors = $(val).find('a:eq(0)');
 
@@ -326,22 +269,116 @@ export class MainComponent implements OnInit {
       });
     }
   }
-//live feed data
-  public liveFeedData = [
-    {"token_number":1,"token_status":"Completed","token_time":"6:00 PM"},
-    {"token_number":2,"token_status":"Cancelled","token_time":"7:00 PM"},
-    {"token_number":3,"token_status":"Completed","token_time":"8:00 PM"},
-    {"token_number":2,"token_status":"Cancelled","token_time":"7:00 PM"},
-    {"token_number":2,"token_status":"Cancelled","token_time":"7:00 PM"},
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
-    ]
+countappointmentloop(){
+    this.subscription = interval(5000).subscribe(x =>{
+       this.countappoinment();
+    })
+}
 
-    public bookingsData = [
-        {"customer_name":"Bala","customer_token":1,"customer_time":"6:00 PM"},
-        {"customer_name":"Venkat","customer_token":2,"customer_time":"7:00 PM"},
-        {"customer_name":"Santha","customer_token":3,"customer_time":"8:00 PM"},
-        {"customer_name":"Venkat","customer_token":2,"customer_time":"7:00 PM"},
-        {"customer_name":"Venkat","customer_token":2,"customer_time":"7:00 PM"},        
-        ]
+countappoinment(){
+    let body={
+    "doctor_id":this.storage.retrieve('doctor_id'),
+	"business_id":this.storage.retrieve('business_id'),
+	"business_date":moment().format('YYYY-MM-DD'),
+    }
+    console.log(body)
+    this.main.countappoinment(body).subscribe((Response:any)=>{
+        if(Response.Message_Code=="TCS"){
+            this.appoinment=Response.output;
+            console.log("appointment bookings cancel checked ",this.appoinment);
+        }
+    })
+}
 
+public yearlyreport:any=[];
+// weeklyerport(){
+//     let body={
+//      "business_id": this.storage.retrieve('business_id'),
+// 	 "doctor_id": this.storage.retrieve('doctor_id')
+//     }
+//     this.main.weeklyreport1(body).subscribe((Response:any)=>{
+//         if(Response.Message_Code=="TNS"){
+//             this.weekly=Response.ReturnValue;
+//                 // Morris.Area({
+//                 //     element: 'area_chart',
+//                 //     data: this.weekly,
+//                 //     lineColors: ['#616161', '#00ced1', '#ff758e'],
+//                 //     xkey: 'period',
+//                 //     ykeys: ['Checked_out', 'booked_count', 'canceled_count'],
+//                 //     labels: ['Checked_out', 'booked_count', 'canceled_count'],
+//                 //     pointSize: 0,
+//                 //     lineWidth: 0,
+//                 //     resize: true,
+//                 //     fillOpacity: 0.8,
+//                 //     behaveLikeLine: true,
+//                 //     gridLineColor: '#e0e0e0',
+//                 //     hideHover: 'auto'
+//                 // });
+                
+//                 // Morris.Bar ({
+//                 //   element: 'bar_chart1',
+//                 //   data: this.weekly,
+//                 //   xkey: 'period',
+//                 //   ykeys: ['Checked_out', 'booked_count', 'canceled_count'],
+//                 //   labels: ['Checked_out', 'booked_count', 'canceled_count'],
+//                 //   barRatio: 0.4,
+//                 //   xLabelAngle: 35,
+//                 //   hideHover: 'auto',
+//                 //   barColors: function (row, series, type) {
+//                 //     if(row.label == "s1") return "#AD1D28";
+//                 //     else if(row.label == "s2") return "#DEBB27";
+//                 //     else if(row.label == "s3") return "#fec04c";
+//                 //   }
+//                 // });
+
+               
+
+
+//                 // Morris.Bar ({
+//                 //     element: 'bar-chart',
+//                 //     data: this.weekly,
+//                 //     xkey: 'period',
+//                 //     ykeys: ['Checked_out', 'booked_count', 'canceled_count'],
+//                 //     labels: ['Checked_out', 'booked_count', 'canceled_count'],
+//                 //     barRatio: 0.4,
+//                 //     xLabelAngle: 35,
+//                 //     hideHover: 'auto',
+//                 //     barColors: function (row, series, type) {
+//                 //       console.log("--> "+row.label, series, type);
+//                 //       if(row.label == "s1") return "#AD1D28";
+//                 //       else if(row.label == "s2") return "#DEBB27";
+//                 //       else if(row.label == "s3") return "#fec04c";
+//                 //     }
+//                 //   });
+//         }
+//     })
+// }
+barchart(){
+    let body={
+        "business_id": this.storage.retrieve('business_id'),
+        "doctor_id": this.storage.retrieve('doctor_id')
+       }
+    this.main.weeklyreport(body).subscribe((Response:any)=>{
+      if(Response.Message_Code =="TNS"){
+        this.weekly=Response.ReturnValue;
+        console.log("bar chart",this.weekly);
+        Morris.Bar({
+          element: 'bar_chart',
+          data: this.weekly,
+          xkey: ['period'],
+          ykeys: ['canceled_count','booked_count','Checked_out'],
+          labels: ['canceled_count','booked_count','Checked_out'],
+          barColors: ['#757575', '#26c6da', '#ffcc80'],
+          hideHover: 'auto',
+          gridLineColor: '#eef0f2',
+          resize: true
+        });
+        
+      }
+    })
+  }
 }

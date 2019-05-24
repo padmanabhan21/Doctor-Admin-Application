@@ -1,0 +1,19 @@
+/* .dropdown-menu pullDown{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.dropdown-menu pullDown{
+    scroll-behavior: smooth;
+    width:20px;
+}
+
+
+ .dropdown-menu pullDown::-webkit-scrollbar{
+    width:20px;
+} */
+
+/* .dropdown-menu pullDown::-webkit-scrollbar-thumb{ 
+    border-radius: 5px;
+    background: rgba(0,0,0,-1);
+} */

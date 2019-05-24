@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-5 col-md-5 col-sm-12">
         <h2>Configuration
-          <small>View And Edit Business Details</small>
+          <small>View And Edit Doctor Details</small>
         </h2>
       </div>
       <div class="col-lg-7 col-md-7 col-sm-12 text-right">
@@ -20,172 +20,249 @@
   <!-- Business Detail view -->
   <div class="container-fluid">
     <div class="row clearfix">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="header">
-                    <h2><strong>Business</strong> Detail</h2>
-                </div>
-                <div class="body product-report">
-
-                  <div class="row clearfix">
-                    <div class="col-lg-4 col-md-12">
-                      <form>
-                        <label for="business">Business Id</label>
-                        <div class="form-group">
-                          <input type="text" id="business" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="businesstype">Business Type</label>
-                        <div class="form-group">
-                          <input type="text" id="businesstype" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="mobinumber">Mobile Number</label>
-                        <div class="form-group">
-                          <input type="text" id="mobinumber" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="breakstart">Break Time Start</label>
-                        <div class="form-group">
-                          <input type="text" id="breakstart" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="busiadd">Business Address</label>
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2><strong>Doctor</strong> Detail</h2>
+          </div>
+          <div class="body product-report">
+            <!-- <div class="body" *ngFor="let view of select"> -->
+            <div class="row clearfix">
+              <div class="col-lg-4 col-md-12">
+                <form>
+                  <label for="business">Doctor Id</label>
+                  <div class="form-group">
+                    <input type="text" name="doctorid" class="form-control" id="" [value]="select.doctor_id" disabled>
+                  </div>
+                  <label for="businesstype">Doctor Hour Start</label>
+                  <div class="form-group">
+                    <input type="text" id="businesstype" class="form-control" [value]="start_time" disabled>
+                  </div>
+                  <label for="mobinumber">Qulification</label>
+                  <div class="form-group">
+                    <input type="text" id="mobinumber" class="form-control" [value]="select.qualification" disabled>
+                  </div>
+                  <label for="breakstart">Specialization</label>
+                  <div class="form-group">
+                    <input type="text" id="breakstart" class="form-control" [value]="spec" disabled>
+                  </div>
+                  <!-- <label for="busiadd">Doctor Hour End</label>
                         <div class="form-group">
                           <input type="text" id="busiadd" class="form-control" placeholder="" disabled>
                         </div>
-                        <label for="busidrage">Business Id Range </label>
+                        <label for="busidrage">Average Wait Time</label>
                         <div class="form-group">
                           <input type="text" id="busidrage" class="form-control" placeholder="" disabled>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                      <form>
-                        <label for="firstname">First Name</label>
-                        <div class="form-group">
-                          <input type="text" id="firstname" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="maincate">Main Category</label>
-                        <div class="form-group">
-                          <input type="text" id="maincate" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="busihour">Business Hour Start</label>
-                        <div class="form-group">
-                          <input type="text" id="busihour" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="breakend">Break Time End</label>
-                        <div class="form-group">
-                          <input type="text" id="breakend" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="busirating">Business Rating</label>
+                        </div> -->
+                </form>
+              </div>
+              <div class="col-lg-4 col-md-12">
+                <form>
+                  <label for="firstname">Doctor Name</label>
+                  <div class="form-group">
+                    <input type="text" id="firstname" class="form-control" [value]="select.doctor_name" disabled>
+                  </div>
+                  <label for="maincate">Doctor Hour End</label>
+                  <div class="form-group">
+                    <input type="text" id="maincate" class="form-control" [value]="end_time" placeholder="" disabled>
+                  </div>
+                  <label for="busihour">Experience</label>
+                  <div class="form-group">
+                    <input type="text" id="busihour" class="form-control" [value]="select.experience" disabled>
+                  </div>
+                  <label for="breakend">Services</label>
+                  <div class="form-group">
+                    <input type="text" id="breakend" class="form-control" [value]="ser" disabled>
+                  </div>
+                  <!-- <label for="busirating">Doctor Rating</label>
                         <div class="form-group">
                           <input type="text" id="busirating" class="form-control" placeholder="" disabled>
                         </div>
-                        <label for="busimode">Business Mode</label>
+                        <label for="busapptype">Doctor Appointment Type</label>
+                        <div class="form-group">
+                          <input type="text" id="busapptype" class="form-control" placeholder="" disabled>
+                        </div> -->
+                  <!-- <label for="busimode">Business Mode</label>
                         <div class="form-group">
                           <input type="text" id="busimode" class="form-control" placeholder="" disabled>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                      <form>
-                        <label for="lastname">Last Name</label>
-                        <div class="form-group">
-                          <input type="text" id="lastname" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="subcate">Sub Category</label>
-                        <div class="form-group">
-                          <input type="text" id="subcate" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="busiend">Business Hour End</label>
-                        <div class="form-group">
-                          <input type="text" id="busiend" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="awt">Avg Wait Time</label>
-                        <div class="form-group">
-                          <input type="text" id="awt" class="form-control" placeholder="" disabled>
-                        </div>
-                        <label for="busigroup">Business Group</label>
+                        </div> -->
+                </form>
+              </div>
+              <div class="col-lg-4 col-md-12">
+                <form>
+                  <label for="lastname">Mobile Number</label>
+                  <div class="form-group">
+                    <input type="text" id="lastname" class="form-control" [value]="select.mobile" disabled>
+                  </div>
+                  <label for="awtedit">Average Wait Time</label>
+                  <div class="form-group">
+                    <input type="text" id="avgtime" class="form-control" [value]="select.average_waiting_time" disabled>
+                  </div>
+                  <label for="busiend">Consultation Fees</label>
+                  <div class="form-group">
+                    <input type="text" id="busiend" class="form-control" [value]="select.consultationfees" disabled>
+                  </div>
+                  <label for="awt">Country</label>
+                  <div class="form-group">
+                    <input type="text" id="awt" class="form-control" [value]="select.country" disabled>
+                  </div>
+                  <!-- <label for="busigroup">Doctor Group</label>
                         <div class="form-group">
                           <input type="text" id="busigroup" class="form-control" placeholder="" disabled>
                         </div>
-                        <label for="busapptype">Business Appointment Type</label>
+                         <label for="busapptype">Doctor Appointment Type</label>
                         <div class="form-group">
                           <input type="text" id="busapptype" class="form-control" placeholder="" disabled>
-                        </div>
-                      </form>
-                    </div>           
-                </div>
-                </div>
+                        </div>  -->
+                </form>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-               
-</div>
+
+  </div>
   <!-- Business detail view edit -->
 
-<!-- edit detail -->
-<div class="container-fluid">
-  <div class="row clearfix">
+  <!-- edit detail -->
+  <div class="container-fluid">
+    <form #configsubmit ="ngForm" id="">
+    <div class="row clearfix">
       <div class="col-lg-12">
-          <div class="card">
-              <div class="header">
-                  <h2><strong>Edit </strong>Business </h2>
-              </div>
-              <div class="body product-report">
-
-                <div class="row clearfix">
-                  <div class="col-lg-4 col-md-12">
-                    <form>
-                      <label for="busihouredit">Business Hour Start</label>
-                      <div class="form-group">
-                        <input type="text" id="busihouredit" class="form-control" placeholder="" >
-                      </div>
-                      <label for="breakstartedit">Break Time Start</label>
-                      <div class="form-group">
-                        <input type="text" id="breakstartedit" class="form-control" placeholder="" >
-                      </div>
-                    </form>
-                  </div>
-                  <div class="col-lg-4 col-md-12">
-                    <form>
-                      <label for="busiendedit">Business Hour End</label>
-                      <div class="form-group">
-                        <input type="text" id="busiendedit" class="form-control" placeholder="" >
-                      </div>
-                      <label for="breakendedit">Break Time End</label>
-                      <div class="form-group">
-                        <input type="text" id="breakendedit" class="form-control" placeholder="" >
-                      </div>
-                    </form>
-                  </div>
-                  <div class="col-lg-4 col-md-12">
-                    <form>
-
-                      <label for="awtedit">Avg Wait Time</label>
-                      <div class="form-group">
-                        <select  id="awtedit" class="form-control" placeholder="" >
-                            <option value="">-- Please select --</option>
-                            <option value="">5</option>
-                            <option value="">10</option>
-                            <option value="">15</option>
-                          </select>
-                      </div>
-                    
-                    </form>
-                  </div>           
-              </div>
-              <div class="row clearfix">
-                  <div class="col-lg-10 col-md-12"></div> 
-                  <div class="col-lg-2 col-md-12">
-              <button type="button" class="btn btn-raised btn-primary btn-round waves-effect" style="width:10em">Ok</button>
-              </div>
-             
-              </div> 
-
-              </div>
+        <div class="card">
+          <div class="header">
+            <h2><strong>Edit </strong>Business </h2>
           </div>
+          <div class="body product-report">
+              <h6><u>Weekdays</u></h6>
+            <div class="row clearfix">
+              <!-- <div class="col-lg-4 col-md-12  text-center">
+                <br><br>
+
+                <h6>Weekday</h6>
+                <br><br><br>
+
+                <h6>Weekend</h6>
+
+              </div> -->
+              
+              <div class="col-lg-6 col-md-12">
+                <!-- <form> -->
+                  <label for="busihouredit">Doctor Hour Start</label>
+                  <div class="form-group">
+                    <input type="time" name="sttime" class="form-control" style="Font-size:13px;" placeholder=""
+                      [(ngModel)]="weekdaystarttime" #start="ngModel" required> 
+                  </div>
+                <!-- </form> -->
+              </div>
+              <div class="col-lg-6 col-md-12">
+                <!-- <form> -->
+                  <label for="seredit">Doctor Hour End</label>
+                  <div class="form-group">
+                    <input type="time" id="busiendedit" name="edtime" style="Font-size:13px;" class="form-control"
+                      placeholder="" [(ngModel)]="weekdayendtime" #end="ngModel" required>
+                  </div>
+                <!-- </form> -->
+              </div>
+              <!-- <div class="col-lg-4 col-md-12">
+                    <form>                        -->
+              <!-- <label for="awtedit">Avg Wait Time</label>
+                      <div class="form-group">
+                        <input type="time" id="avgtime" name="avgtime" style="Font-size:13px;" class="form-control">
+                          
+                      </div>                     -->
+              <!-- </form> -->
+              <!-- </div>            -->
+            </div>
+            <h6><u>Weekend</u></h6>
+            <div class="row clearfix">
+           
+              <div class="col-lg-6 col-md-12">
+                <!-- <form action=""> -->
+                  <label for="busihouredit">Doctor Hour Start</label>
+                  <div class="form-group">
+                    <input type="time" name="starttime" class="form-control" style="Font-size:13px;" placeholder=""
+                      [(ngModel)]="weekendstarttime" #hourstart="ngModel" required>
+                  </div>
+                <!-- </form> -->
+              </div>
+              <div class="col-lg-6 col-md-12">
+                <!-- <form action=""> -->
+                  <label for="seredit">Doctor Hour End</label>
+                  <div class="form-group">
+                    <input type="time" id="busiendedit" name="edingtime" style="Font-size:13px;" class="form-control"
+                      placeholder="" [(ngModel)]="weekendendtime" #endhour="ngModel" required>
+                  </div>
+                <!-- </form> -->
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-lg-4 col-md-12">
+                <!-- <form> -->
+                <label for="specedit">Specialization</label>
+                <div class="form-group">
+                  <!-- <input type="text" id="breakstartedit" class="form-control" placeholder="" disabled> -->
+                  <select id="specedit" name="special" class="form-control" placeholder="Please Select Here" [(ngModel)]="specialization" #spe="ngModel" required>
+                    <option  *ngFor="let ary of terst" [ngValue]="ary.specialization_id" >
+                      {{ary.specialization_name}}</option>
+                  </select>
+                </div>
+              <!-- </form> -->
+              </div>
+              <div class="col-lg-4 col-md-12">
+                <label for="awtedit">Avg Wait Time</label>
+                <div class="form-group">
+                  <input type="number" id="avgtimee" name="avgtime" style="Font-size:13px;" [(ngModel)]="awt" class="form-control" #awttime="ngModel" required>
+                </div>
+              </div>
+            
+              <div class="col-lg-4 col-md-12">
+                <!-- <form> -->
+                <label for="breakendedit">Services</label>
+                <div class="form-group">
+                  <!-- <input type="text" id="breakendedit" class="form-control" placeholder="" disabled> -->
+                  <select id="seredit" class="form-control" placeholder="Please Select Here" name="service" [(ngModel)]="service" #services="ngModel" requireds>
+                    <option  *ngFor="let services of srvc" [ngValue]="services.service_id">
+                      {{services.service_name}}</option>
+                      
+                  </select>
+                </div>
+              <!-- </form> -->
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-lg-10 col-md-12"></div>
+              <div class="col-lg-2 col-md-12">
+                <button type="button" class="btn btn-raised btn-primary btn-round waves-effect" style="width:10em"
+                  (click)="update(weekdaystarttime,weekdayendtime,weekendstarttime,weekendendtime,specialization,service,awt); configsubmit.reset()" [disabled]="!configsubmit.valid">Ok</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </form>
   </div>
-             
-</div>
-<!-- Edit Detatil end -->
+  <!-- Edit Detatil end -->
+  <div>
+    <p id="demo1"></p>
+    <script>
+
+      var d = new Date();
+      var weekday = new Array(7);
+      weekday[0] = "Sun";
+      weekday[1] = "Mon";
+      weekday[2] = "Tue";
+      weekday[3] = "Wed";
+      weekday[4] = "Thu";
+      weekday[5] = "Fri";
+      weekday[6] = "Sat";
+
+      var n = weekday[d.getDay()];
+      document.getElementById("demo1").innerHTML = n;
+
+    </script>
+  </div>
 
 </section>
